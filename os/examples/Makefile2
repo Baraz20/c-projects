@@ -1,0 +1,32 @@
+
+
+all: convkelvin convfahrenheit convcelsius
+
+
+# $@ and $^ are 'automatic variables'. They are updated before 
+# the commnd is issued. The value of $@ is set to the target 
+# and the value of $^ is set to the list of all the dependecies 
+# of the rule
+
+convfahrenheit: celsius.o kelvin.o convert_fahrenheit.o
+	gcc -o $@ $^
+
+convcelsius: kelvin.o fahrenheit.o convert_celsius.o
+	gcc -o $@ $^
+
+convkelvin: celsius.o fahrenheit.o convert_kelvin.o
+	gcc -o $@ $^
+
+
+# '%.o: %.c' is a 'patern rule' telling the 'make' utility to 
+# search for files with suffix '.c' and create targets
+# with the same name replacing '.c' by '.o'.
+# $< is an automatic variable that holds the name of the current 
+# dependency. 
+%.o: %.c
+	gcc -c $<
+
+# phony nodes
+clean:
+	rm *.o *~
+

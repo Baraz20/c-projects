@@ -1,0 +1,39 @@
+
+#simple Makefile with all the dependencies explicitly listed
+
+all: convkelvin convfahrenheit convcelsius
+
+convfahrenheit: celsius.o kelvin.o convert_fahrenheit.o
+	gcc -o convfahrenheit celsius.o kelvin.o \
+		convert_fahrenheit.o
+
+convcelsius: kelvin.o fahrenheit.o convert_celsius.o
+	gcc -o convcelsius kelvin.o fahrenheit.o \
+		convert_celsius.o
+
+convkelvin: celsius.o fahrenheit.o convert_kelvin.o
+	gcc -o convkelvin celsius.o fahrenheit.o \
+		convert_kelvin.o
+
+celsius.o: celsius.c celsius.h
+	gcc -c celsius.c
+
+kelvin.o:  kelvin.c  kelvin.h
+	gcc -c kelvin.c
+
+fahrenheit.o: fahrenheit.c fahrenheit.h
+	gcc -c fahrenheit.c
+
+convert_kelvin.o: convert_kelvin.c fahrenheit.h celsius.h
+	gcc -c convert_kelvin.c
+
+convert_fahrenheit.o: convert_fahrenheit.c kelvin.h celsius.h
+	gcc -c convert_fahrenheit.c
+
+convert_celsius.o: convert_celsius.c fahrenheit.h kelvin.h
+	gcc -c convert_celsius.c
+
+# phony nodes
+clean:
+	rm *.o *~
+

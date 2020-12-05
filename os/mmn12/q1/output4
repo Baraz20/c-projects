@@ -1,0 +1,6 @@
+please enter a length for the array:
+please enter 10 integers seperated by spaces for the array:
+the entered array of length 10 is:
+-10 -9 -7 -5 0 0 0 -2 10000 -10000 
+the partial sum is:
+-10 -19 -26 -31 -31 -31 -31 -33 9967 -33 

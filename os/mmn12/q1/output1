@@ -1,0 +1,6 @@
+please enter a length for the array:
+please enter 8 integers seperated by spaces for the array:
+the entered array of length 8 is:
+3 5 1 -15 10 -1 10 14 
+the partial sum is:
+3 8 9 -6 4 3 13 27 
