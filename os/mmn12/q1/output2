@@ -1,0 +1,6 @@
+please enter a length for the array:
+please enter 7 integers seperated by spaces for the array:
+the entered array of length 7 is:
+1 1 2 3 5 8 13 
+the partial sum is:
+1 2 4 7 12 20 33 

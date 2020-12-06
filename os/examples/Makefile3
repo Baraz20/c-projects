@@ -1,0 +1,40 @@
+
+# 'make' utility allows variable definitions. For example,
+# the value of the variable CC is set to the name of compiler
+# and the value of HDRS is set to the list of header files
+CC	= gcc
+CFLAGS	= -Wall
+LFLAGS	= -L.
+LIBS	= -lm
+HDRS	= celsius.h fahrenheit.h kelvin.h
+OBJS_convfahrenheit	= celsius.o kelvin.o convert_fahrenheit.o
+OBJS_convcelsius	= kelvin.o fahrenheit.o convert_celsius.o
+OBJS_convkelvin		= celsius.o fahrenheit.o convert_kelvin.o
+
+
+# $(VAR) is a directive to use the value of variable VAR defined before
+OBJS	= $(OBJS_convfahrenheit) $(OBJS_convcelsius) $(OBJS_convkelvin)
+
+# 'OBJS:.o=.c' is a construction that directs "take the members of the list
+# OBJS and create a new list substituting .o  by .c"
+SRCS	= $(OBJS:.o=.c)
+
+
+all: convkelvin convfahrenheit convcelsius
+
+convfahrenheit: $(OBJS_convfahrenheit)
+	$(CC) -o $@ $^ $(LFLAGS) $(LIBS)
+
+convcelsius: $(OBJS_convcelsius)
+	$(CC) -o $@ $^ $(LFLAGS) $(LIBS)
+
+convkelvin: $(OBJS_convkelvin)
+	$(CC) -o $@ $^ $(LFLAGS) $(LIBS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
+
+# phony nodes
+clean:
+	rm *.o *~ *.bak
+
