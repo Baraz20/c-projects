@@ -6,7 +6,6 @@ and calculates it's "partial sum" */
 /* init functions */
 int* partialSums(int* arr,int len);
 void printArray(int* arr,int len);
-void printBinary(int a);
 
 int main()
 {
