@@ -12,6 +12,8 @@ void init_mat(mat);
 void print_mat(mat);
 void add_mat(mat,mat,mat);
 void sub_mat(mat,mat,mat);
-void scalar_mul(mat,float,mat);
+void mul_scalar(mat,float,mat);
+void mul_mat(mat,mat,mat);
+void mat_t(mat,mat);
 
 #endif /* _mat__ */
